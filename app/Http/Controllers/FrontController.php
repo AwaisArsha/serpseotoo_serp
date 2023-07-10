@@ -348,8 +348,8 @@ class FrontController extends Controller
         // if($user_info->payment != 0 && $user_info->payment != null) {
         //     $expire_date = new DateTime($user_info->expire_date);
         //     $now_date = new DateTime(date('Y-m-d H:i:s'));
-        //     $interval = $expire_date->diff($now_date); 
-        //     $remaining_days = $interval->d;      
+        //     $interval = $expire_date->diff($now_date);
+        //     $remaining_days = $interval->d;
         // }
 
 
@@ -404,8 +404,8 @@ class FrontController extends Controller
         // if($user_info->payment != 0 && $user_info->payment != null) {
         //     $expire_date = new DateTime($user_info->expire_date);
         //     $now_date = new DateTime(date('Y-m-d H:i:s'));
-        //     $interval = $expire_date->diff($now_date); 
-        //     $remaining_days = $interval->d;      
+        //     $interval = $expire_date->diff($now_date);
+        //     $remaining_days = $interval->d;
         // }
 
         $shopier_info = DB::table('shopier')->where('id', $shopier_id)->first();
@@ -470,7 +470,7 @@ class FrontController extends Controller
 
     public function Message()
     {
-        //echo "Bro i really need a good review. PLz give me a 5 star rating and review."; 
+        //echo "Bro i really need a good review. PLz give me a 5 star rating and review.";
         // echo "<br>";
         // echo "You can write that 'I always feel relaxed when i am working with you' or any other thing that you want to write";
         die;
@@ -1226,8 +1226,8 @@ class FrontController extends Controller
         // if($user_info->payment != 0 && $user_info->payment != null) {
         //     $expire_date = new DateTime($user_info->expire_date);
         //     $now_date = new DateTime(date('Y-m-d H:i:s'));
-        //     $interval = $expire_date->diff($now_date); 
-        //     $remaining_days = $interval->d;      
+        //     $interval = $expire_date->diff($now_date);
+        //     $remaining_days = $interval->d;
         // }
 
 
@@ -1296,8 +1296,8 @@ class FrontController extends Controller
         // if($user_info->payment != 0 && $user_info->payment != null) {
         //     $expire_date = new DateTime($user_info->expire_date);
         //     $now_date = new DateTime(date('Y-m-d H:i:s'));
-        //     $interval = $expire_date->diff($now_date); 
-        //     $remaining_days = $interval->d;      
+        //     $interval = $expire_date->diff($now_date);
+        //     $remaining_days = $interval->d;
         // }
 
         $shopier_info = DB::table('shopier')->where('id', $shopier_id)->first();

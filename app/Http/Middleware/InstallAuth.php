@@ -21,12 +21,12 @@ class InstallAuth
         $DB_DATABASE = env('DB_DATABASE');
         $DB_USERNAME = env('DB_USERNAME');
         $DB_PASSWORD = env('DB_PASSWORD');
-        if(isset($DB_HOST) && $DB_HOST != '' && isset($DB_DATABASE) && $DB_DATABASE != '' && isset($DB_USERNAME) && $DB_USERNAME != '' && isset($DB_PASSWORD) && $DB_PASSWORD != '') {
+        if(isset($DB_HOST) && $DB_HOST != '' && isset($DB_DATABASE) && $DB_DATABASE != '' && isset($DB_USERNAME) && $DB_USERNAME != '' && isset($DB_PASSWORD)) {
             $api_data = DB::table('api')->get();
             if(count($api_data) > 0) {
                 $api = DB::table('api')->first();
                 if($api->api_email != null && $api->api_key != null) {
-                    
+
                 } else {
                     return redirect('/install-app');
                 }
