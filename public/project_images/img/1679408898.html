@@ -1,0 +1,116 @@
+ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="contactus.aspx.cs" Inherits="contactus" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <fieldset style="width: 300px;">
+            <legend>Contact Us Form</legend>
+            <table>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Conatct Number
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtcontact" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Message
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtmessage" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    </form>
+</body>
+</html>
+
+Code behind(C#):-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Text;
+
+public partial class contactus : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnsubmit_Click(object sender, EventArgs e)
+    {
+
+        try
+        {
+            MailMessage Msg = new MailMessage();
+            //Sender e-mail address.
+            Msg.From = new MailAddress(txtemail.Text);
+            //Recipient e-mail address.
+            Msg.To.Add("sender@gmail.com");
+
+
+            //Meaages Subject
+            Msg.Subject = "Contact Us Form-Neerajcodesolutions";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Name :" + txtname.Text + "\r\n");
+            sb.Append("Contact:" + txtcontact.Text + "\r\n");
+            sb.Append("Email:" + txtemail.Text + "\r\n");
+            sb.Append("Message:" + txtmessage.Text + "\r\n");
+
+            Msg.Body = sb.ToString();
+            // SMTP server IP.
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 25;
+            smtp.Credentials = new System.Net.NetworkCredential("sender@gmail.com", "password");
+            smtp.EnableSsl = true;
+            smtp.Send(Msg);
+            //Mail Message
+            Response.Write("<Script>alert('Thanks for contact us,our team will be contact you as soon as possible')</Script>");
+            // Clear the textbox values
+            txtname.Text = "";
+            txtcontact.Text = "";
+            txtemail.Text = "";
+            txtmessage.Text = "";
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+
+        }
+    }
+}
